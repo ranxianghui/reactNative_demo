@@ -51,7 +51,9 @@ Android用户推荐使用Genymotion或海马玩模拟器，Androidstudio自带�
 
 # 了解ReactNavtie项目的机构 #
 ![项目结构图](http://i.imgur.com/xTgaQzW.jpg)
+
 项目创建后会生成一个 
+
 1. android文件夹这个文件夹是一个android的项目工程 可以使用AndroidStudio打开此工程
 2. ios文件则是一个xcode项目可以使用xcode编译器打开
 3. 这里面有两个入口文件分别是iso和Android项目启动时的入口index.ios.js和index.android.js
