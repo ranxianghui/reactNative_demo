@@ -9,7 +9,10 @@
   "dependencies": {
     "react": "15.4.1",
     "react-native": "0.39.2",
-    "react-native-calendar": "^0.9.0"
+    "react-native-calendar": "^0.9.0",
+    "react-native-custom-navigation": "^0.2.2",
+    "react-native-navigation-bar": "^0.2.1",
+    "react-native-viewpager": "*.*"
   },
   "devDependencies": {
     "babel-jest": "18.0.0",

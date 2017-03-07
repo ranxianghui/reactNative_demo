@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 let {height, width} = Dimensions.get('window');
 
-class Calendar extends Component {
+export default class Calendar extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -231,6 +231,7 @@ class DateBoard extends React.Component {
                                 { color: '#fff', fontWeight: 'bold' }]}>{i}</Text>
                                 {/*订制日历每一天的样式*/}
                             {this._ifBusy(myYear, myMonth, i) ? <View style={styles.point}></View> : null}
+                            {this._ifBusy(myYear, myMonth, i) ? <Text>123</Text> : null}
                         </View>
                     </TouchableOpacity>
                 )
@@ -244,6 +245,7 @@ class DateBoard extends React.Component {
                             <Text style={styles.dateText}>{i}</Text>
                             {/*//订制日历每一天的样式*/}
                             {this._ifBusy(myYear, myMonth, i) ? <View style={styles.point}></View> : null}
+                            {this._ifBusy(myYear, myMonth, i) ? <Text>123</Text> : null}
                         </View>
                     </TouchableOpacity>
                 )
@@ -253,9 +255,9 @@ class DateBoard extends React.Component {
     };
     _ifBusy(year, month, day) {
         for (let j = 0; j < this.props.busyDay.length; j++) {
-            if (this.props.busyDay[j].getFullYear() == year
-                && this.props.busyDay[j].getMonth() == month
-                && this.props.busyDay[j].getDate() == day) {
+            if (this.props.busyDay[j].date.getFullYear() == year
+                && this.props.busyDay[j].date.getMonth() == month
+                && this.props.busyDay[j].date.getDate() == day) {
                 return true;
             }
         }
@@ -352,6 +354,15 @@ const styles = StyleSheet.create({
         height: 5,
         borderRadius: 3,
         backgroundColor: '#f00'
+    },
+    text: {
+        position: 'absolute',
+        left: width,
+        bottom: 1,
+        width: 5,
+        height: 10,
+        color: 'black',
+        borderRadius: 3,
+        backgroundColor: '#f00'
     }
 });
-module.exports = Calendar;

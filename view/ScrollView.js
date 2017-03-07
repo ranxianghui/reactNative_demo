@@ -7,7 +7,7 @@ import{
     View
 } from 'react-native'
 
-class IScrolledDownAndWhatHappenedNextShockedMe extends Component {
+export default class IScrolledDownAndWhatHappenedNextShockedMe extends Component {
     render() {
         return(
             <ScrollView>
@@ -46,4 +46,3 @@ class IScrolledDownAndWhatHappenedNextShockedMe extends Component {
         );
     }
 };
-module.exports = IScrolledDownAndWhatHappenedNextShockedMe;

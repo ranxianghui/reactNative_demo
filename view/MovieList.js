@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { AppRegistry, ListView, Text, View } from 'react-native';
 
-class ListViewBasics extends Component {
+export default class ListViewBasics extends Component {
     // 初始化模拟数据
     constructor(props) {
         super(props);
@@ -23,6 +23,3 @@ class ListViewBasics extends Component {
         );
     }
 }
-
-module.exports = ListViewBasics;
-// Appregistry.registerComponent('MovieList', () => MovieList);

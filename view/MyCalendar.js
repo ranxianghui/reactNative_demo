@@ -9,35 +9,45 @@ import {
 
 // var dateFormat = require('dateformat');
 import Calendar from './Calendar';
+import Platform from "react-native";
 var busyDays = [
-    new Date(2016, 8, 8),//2016年9月8号
-    new Date(2016, 8, 18),//2016年9月18号
-    new Date(2016, 9, 8),//2016年10月8号
-    new Date(2016, 9, 18),//2016年10月18号
-    new Date(2016, 10, 8),//2016年11月8号
-    // new Date(2016, 10, 8),//2016年11月8号
-    new Date(2016, 10, 8)];//2016年11月18号
-class MyCalendar extends Component {
+    { date: new Date(2017, 2, 5), name:'green day'},//2016年9月8号
+    { date: new Date(2017, 2, 6), name:'green day'},//2016年9月8号
+    { date: new Date(2017, 2, 7), name:'green day'},//2016年9月8号
+    { date: new Date(2017, 2, 8), name:'green day'},//2016年9月8号
+    { date: new Date(2017, 2, 9), name:'green day'},//2016年9月8号
+    { date: new Date(2017, 2, 10), name:'green day'},//2016年9月8号
+    { date: new Date(2017, 2, 11), name:'green day'},//2016年9月8号
+    { date: new Date(2017, 2, 12), name:'green day'}]//2016年9月8号
+var busyDays2 = [
+    { date: new Date(2017, 2, 13), name:'green day'},//2016年9月8号
+    { date: new Date(2017, 2, 14), name:'green day'},//2016年9月8号
+    { date: new Date(2017, 2, 15), name:'green day'},//2016年9月8号
+    { date: new Date(2017, 2, 18), name:'green day'},//2016年9月8号
+    { date: new Date(2017, 2, 19), name:'green day'},//2016年9月8号
+    { date: new Date(2017, 2, 20), name:'green day'},//2016年9月8号
+    { date: new Date(2017, 2, 21), name:'green day'},//2016年9月8号
+    { date: new Date(2017, 2, 22), name:'green day'}]//2016年9月8号
+export default class MyCalendar extends Component {
     constructor(props) {
         super(props);
         this.state = {
             date:new Date(),
-
         }
     };
     render() {
         let _this = this;
         return (
-            <View style={styles.container}>
-                <Calendar
-                    ref='myCalendar'
-                    date={_this.state.date} //必要值
-                    onDateChange={(date) => ToastAndroid.show(date, ToastAndroid.SHORT) }
-                    prevTitle='prev'//默认为Prev
-                    nextTitle='next'//默认为Next
-                    busyDay={busyDays}
-                />
-            </View>
+        <View style={styles.container}>
+            <Calendar
+                ref='myCalendar'
+                date={_this.state.date} //必要值
+                onDateChange={(date) => ToastAndroid.show(date, ToastAndroid.SHORT) }
+                prevTitle='prev'//默认为Prev
+                nextTitle='next'//默认为Next
+                busyDay={busyDays}
+            />
+        </View>
         );
     }
 }
@@ -60,4 +70,3 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
 });
-module.exports = MyCalendar;

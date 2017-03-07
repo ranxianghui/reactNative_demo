@@ -3,13 +3,11 @@
  * https://github.com/facebook/react-native
  * @flow
  */
-import React from 'react';
-import { AppRegistry } from 'react-native';
 
-import App from './view/App';
+import React, { Component } from 'react';
+import {
+    AppRegistry,
+} from 'react-native';
+import SetUp from './SetUp';
 
-const ReactTest = () => {
-  return <App />;
-};
-
-AppRegistry.registerComponent('ReactTest', () => ReactTest);
+AppRegistry.registerComponent('ReactTest', () => SetUp);
