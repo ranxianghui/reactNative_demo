@@ -58,3 +58,55 @@ Android用户推荐使用Genymotion或海马玩模拟器，Androidstudio自带�
 2. ios文件则是一个xcode项目可以使用xcode编译器打开
 3. 这里面有两个入口文件分别是iso和Android项目启动时的入口index.ios.js和index.android.js
 4. 下方有一个package.json文件 这个文件中管理了该reactnative项目所依赖的js依赖库 当我们在这个文件路径下执行 npm install 命令时系统会下载package.js中涉及到的依赖库到node_modules文件夹中。
+## Reactive Component 生命周期 ##
+![](http://i.imgur.com/nA0Ts5v.jpg)
+代码：
+    export default xxx SetUp extends Component {
+    constructor(props){
+    super(props);
+    this.state = {
+    };
+    }
+    
+    componentWillMount (){
+       // 在初始化渲染执行之前立刻调用
+    }
+    
+    componentDidMount(){
+    //在初始化渲染执行之后立刻调用一次
+    }
+    
+    componentWillReceiveProps( nextProps){
+    // 在组件接收到新的 props 的时候调用，
+    // 也就是父组件修改子组件的属性时触发。
+    // 在初始化渲染的时候，该方法不会调用。
+    // 可以用于更新 state 来响应某个 prop 的改变。
+    }
+    
+    shouldComponentUpdate( nextProps,  nextState){
+    return true;
+    // 在接收到新的 props 或者 state，将要渲染之前调用,
+    // 如果确定新的 props 和 state 不会导致组件更新，
+    // 则此处应该 返回 false。返回true将进行渲染。
+    }
+    
+    componentWillUpdate( nextProps,  nextState){
+    // 在接收到新的 props 或者 state
+    // 并且shouldComponentUpdate返回true时调用
+    }
+    
+    
+    componentDidUpdate( prevProps,  prevState){
+    // 在组件的更新已经同步到 DOM 中之后立刻被调用
+    }
+    
+    componentWillUnmount(){
+    // 在组件从 DOM 中移除的时候立刻被调用。
+    // 在该方法中执行任何必要的清理，
+    // 比如无效的定时器，或者清除在 componentDidMount 中创建的 DOM 元素。
+    }
+    
+    render() {
+    return <view/>;
+    }
+    }
