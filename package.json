@@ -12,6 +12,7 @@
     "react-native-calendar": "^0.9.0",
     "react-native-custom-navigation": "^0.2.2",
     "react-native-navigation-bar": "^0.2.1",
+    "react-native-tab-navigator": "^0.3.3",
     "react-native-viewpager": "*.*",
     "react-native-elements": "*.*"
   },

@@ -15,7 +15,7 @@ export default class SimpleNavigationApp extends Component {
     constructor(props){
         super(props)
         this.state={
-
+            selectedTab :'主页'
         }
     }
     onBackHandle = () =>{
@@ -45,73 +45,48 @@ export default class SimpleNavigationApp extends Component {
                     onRightButtonPress={this.onForwardHandle}/>
                 </View>
                 <View style={{flex: 1, flexDirection: 'column' }}>
-                    {/*
-                    <Navigator
-                        initialRoute={{ title: 'My Initial Scene', index: 0 }}
-                        renderScene={
-                            (route, navigator) =>
-                        <MyScene
-                            title={route.title}
-
-                            // Function to call when a new scene should be displayed
-                            onForward={ () => {
-                                const nextIndex = route.index + 1;
-                                navigator.push({
-                                    title: 'Scene ' + nextIndex,
-                                    index: nextIndex,
-                                });
-                            }}
-
-                            // Function to call to go back to the previous scene
-                            onBack={() => {
-                                if (route.index > 0) {
-                                    navigator.pop();
-                                }
-                            }}
-                        />
-
-                    }
-                    />
-                     */}
-                    <TabNavigator>
+                    <TabNavigator >
                         <TabNavigator.Item
                             title="主页"
-                            selected={this.state.selectedTab === 'TabFooterHome'}
-                            selectedTitleStyle={styles.selectedTextStyle}
-                            titleStyle={styles.textStyle}
-                            renderIcon={() => <Icon  name='home' type='font-awesome' color="#999" />}
-                            renderSelectedIcon={() => <Icon name='home' type='font-awesome' color='#1d9d74' />}
-                            onPress={() => this.setState({ selectedTab: 'TabFooterHome' })}>
-                            <TabFooterHome {...this.props}/>
-                        </TabNavigator.Item>
-                        <TabNavigator.Item
-                            title="订单"
-                            selected={this.state.selectedTab === 'TabFooterOrder'}
+                            selected={this.state.selectedTab === '主页'}
                             selectedTitleStyle={styles.selectedTextStyle}
                             titleStyle={styles.textStyle}
                             renderIcon={() => <Icon  name='th' type='font-awesome' color="#999" />}
                             renderSelectedIcon={() => <Icon name='th' type='font-awesome' color='#1d9d74' />}
-                            onPress={() => this.setState({ selectedTab: 'TabFooterOrder' })}>
+                            onPress={() => this.setState({ selectedTab: '主页' })}>
                             <TabFooterOrder {...this.props}/>
                         </TabNavigator.Item>
                         <TabNavigator.Item
-                            title="购物车"
-                            selected={this.state.selectedTab === 'TabFooterCart'}
+                            creationPolicy="auto"
+                            title="跳转"
+                            selected={this.state.selectedTab === '跳转'}
+                            selectedTitleStyle={styles.selectedTextStyle}
+                            titleStyle={styles.textStyle}
+                            renderIcon={() => <Icon  name='home' type='font-awesome' color="#999" />}
+                            renderSelectedIcon={() => <Icon name='home' type='font-awesome' color='#1d9d74' />}
+                            onPress={() => this.setState({ selectedTab: '跳转' })}>
+                            <TabFooterHome {...this.props}/>
+                        </TabNavigator.Item>
+                        <TabNavigator.Item
+                            title="编辑"
+                            creationPolicy="auto"
+                            selected={this.state.selectedTab === '编辑'}
                             selectedTitleStyle={styles.selectedTextStyle}
                             titleStyle={styles.textStyle}
                             renderIcon={() => <Icon  name='cart-arrow-down' type='font-awesome' color="#999" />}
                             renderSelectedIcon={() => <Icon name='cart-arrow-down' type='font-awesome' color='#1d9d74' />}
-                            onPress={() => this.setState({ selectedTab: 'TabFooterCart' })}>
+                            onPress={() => this.setState({ selectedTab: '编辑' })}>
                             <TabFooterCart {...this.props}/>
                         </TabNavigator.Item>
                         <TabNavigator.Item
-                            title="我"
-                            selected={this.state.selectedTab === 'TabFooterMy'}
+                            title="退出"
+                            creationPolicy="auto"
+                            selected={this.state.selectedTab === '退出'}
                             selectedTitleStyle={styles.selectedTextStyle}
                             titleStyle={styles.textStyle}
                             renderIcon={() => <Icon  name='user' type='font-awesome' color="#999" />}
                             renderSelectedIcon={() => <Icon name='user' type='font-awesome' color='#1d9d74' />}
-                            onPress={() => this.setState({ selectedTab: 'TabFooterMy' })}>
+                            onPress={() => this.setState({ selectedTab: '退出' })}>
                             <TabFooterMy {...this.props}/>
                         </TabNavigator.Item>
                     </TabNavigator>

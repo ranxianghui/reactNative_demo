@@ -10,6 +10,7 @@ import {
 // var dateFormat = require('dateformat');
 import Calendar from './Calendar';
 import Platform from "react-native";
+
 var busyDays = [
     { date: new Date(2017, 2, 5), name:'green day'},//2016年9月8号
     { date: new Date(2017, 2, 6), name:'black day'},//2016年9月8号
