@@ -11,15 +11,19 @@ import React, { Component } from 'react';
 import {
     AppRegistry,
     StyleSheet,
+    Navigator,
     Text,
     View
 } from 'react-native';
-import App from './view/App';
-import TextView from './view/TextView';
-import ListViewBasics from './view/MovieList';
-import MyCalendar from './view/MyCalendar';
-import testCalendar from './view/testCalendar';
+// import App from './view/App';
+// import TextView from './view/TextView';
+// import ListViewBasics from './view/MovieList';
+// import MyCalendar from './view/MyCalendar';
+// import testCalendar from './view/testCalendar';
 import SimpleNavigationApp from './view/navigation/SimpleNavigationApp'
+
+const defaultRoute = {component: SimpleNavigationApp};
+
 export default class SetUp extends Component {
     constructor(props){
         super(props);
@@ -68,7 +72,18 @@ export default class SetUp extends Component {
     render() {
         return ( <View style={{flex: 1, flexDirection: 'column' ,justifyContent:'flex-start'}}>
 
-                <SimpleNavigationApp />
+                <Navigator
+                    initialRoute={defaultRoute}
+                    configureScene={(route, routeStack) => Navigator.SceneConfigs.HorizontalSwipeJump }
+                    renderScene={(route, navigator) => {
+                        let Component = route.component;
+                        return (
+                            <Component {...route.params} navigator={navigator} />
+                        );
+                    }
+                    }
+                />
+                {/*<SimpleNavigationApp />*/}
                 {/*<MyCalendar />*/}
                 {/*<Text style={{ height: 200}}>11111</Text>*/}
                 {/*<TextView style={{ height: 200}}/>*/}

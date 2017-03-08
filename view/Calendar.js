@@ -220,18 +220,20 @@ class DateBoard extends React.Component {
             arr.push(<View key={-i} style={[styles.dateBox, { height: cellWidth}]}></View>)
         }
         for (var i = 1; i < monthDay[myMonth] + 1; i++) {
+            var msg = this._ifBusy(myYear, myMonth, i);
             if (this.props.day == i) {
                 arr.push(
                     <TouchableOpacity
                         onPress={this.props.selectDay.bind(this, i)}
-                        key={i} style={[styles.dateBox, { height: cellWidth}]}>
+                        key={i} style={[styles.dateBox, { height: cellWidth+10 }]}>
                         <View style={[styles.selected,
-                            { backgroundColor: '#35c0c5', height: cirWidth, width: cirWidth }]}>
+                            { backgroundColor: '#35c0c5', height: cirWidth+10 , width: cirWidth }]}>
                             <Text style={[styles.dateText,
                                 { color: '#fff', fontWeight: 'bold' }]}>{i}</Text>
                                 {/*订制日历每一天的样式*/}
-                            {this._ifBusy(myYear, myMonth, i) ? <View style={styles.point}></View> : null}
-                            {this._ifBusy(myYear, myMonth, i) ? <Text>123</Text> : null}
+
+                            {msg != null ? <View style={styles.point}></View> : null}
+                            {msg != null ? <Text>{msg}</Text> : null}
                         </View>
                     </TouchableOpacity>
                 )
@@ -239,13 +241,13 @@ class DateBoard extends React.Component {
                 arr.push(
                     <TouchableOpacity
                         onPress={this.props.selectDay.bind(this, i)}
-                        key={i} style={[styles.dateBox, { height: cellWidth }]}>
+                        key={i} style={[styles.dateBox, { height: cellWidth +10 }]}>
                         <View style={[styles.selected,
-                            { height: cirWidth, width: cirWidth }]}>
+                            { height: cirWidth+10 , width: cirWidth }]}>
                             <Text style={styles.dateText}>{i}</Text>
                             {/*//订制日历每一天的样式*/}
-                            {this._ifBusy(myYear, myMonth, i) ? <View style={styles.point}></View> : null}
-                            {this._ifBusy(myYear, myMonth, i) ? <Text>123</Text> : null}
+                            {msg != null ? <View style={styles.point}></View> : null}
+                            {msg != null ? <Text>{msg}</Text> : null}
                         </View>
                     </TouchableOpacity>
                 )
@@ -258,10 +260,10 @@ class DateBoard extends React.Component {
             if (this.props.busyDay[j].date.getFullYear() == year
                 && this.props.busyDay[j].date.getMonth() == month
                 && this.props.busyDay[j].date.getDate() == day) {
-                return true;
+                return this.props.busyDay[j].name;
             }
         }
-        return false;
+        return null;
     }
 
     render() {
@@ -343,7 +345,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         width: width / 10,
         height: width / 10,
-        borderRadius: width / 20,
+       // borderRadius: width / 20,
     },
 
     point: {

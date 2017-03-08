@@ -12,13 +12,13 @@ import Calendar from './Calendar';
 import Platform from "react-native";
 var busyDays = [
     { date: new Date(2017, 2, 5), name:'green day'},//2016年9月8号
-    { date: new Date(2017, 2, 6), name:'green day'},//2016年9月8号
-    { date: new Date(2017, 2, 7), name:'green day'},//2016年9月8号
-    { date: new Date(2017, 2, 8), name:'green day'},//2016年9月8号
-    { date: new Date(2017, 2, 9), name:'green day'},//2016年9月8号
-    { date: new Date(2017, 2, 10), name:'green day'},//2016年9月8号
-    { date: new Date(2017, 2, 11), name:'green day'},//2016年9月8号
-    { date: new Date(2017, 2, 12), name:'green day'}]//2016年9月8号
+    { date: new Date(2017, 2, 6), name:'black day'},//2016年9月8号
+    { date: new Date(2017, 2, 7), name:'white day'},//2016年9月8号
+    { date: new Date(2017, 2, 8), name:'red day'},//2016年9月8号
+    { date: new Date(2017, 2, 9), name:'happy day'},//2016年9月8号
+    { date: new Date(2017, 2, 10), name:'blank day'},//2016年9月8号
+    { date: new Date(2017, 2, 11), name:'null day'},//2016年9月8号
+    { date: new Date(2017, 2, 12), name:'tired day'}]//2016年9月8号
 var busyDays2 = [
     { date: new Date(2017, 2, 13), name:'green day'},//2016年9月8号
     { date: new Date(2017, 2, 14), name:'green day'},//2016年9月8号

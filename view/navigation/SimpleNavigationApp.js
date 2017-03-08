@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { AppRegistry,StyleSheet, Navigator, Text, View } from 'react-native';
-import NavigationBar from 'react-native-navigation-bar'
+import NavigationBar from 'react-native-navigation-bar';
 import MyScene from './MyScene';
 import MyCalendar from '../MyCalendar';
 import TabNavigator from 'react-native-tab-navigator';
@@ -24,9 +24,12 @@ export default class SimpleNavigationApp extends Component {
     onForwardHandle = () =>{
         alert('需要自定义功能');
     }
+
+
+
     render() {
         return (
-            <View style={{ backgroundColor:'yellow', flexDirection: 'column' ,flex:1, justifyContent:'flex-start',borderStyle: 'solid', borderWidth: 1,borderColor:'green'}}>
+            <View style={{ backgroundColor:'white', flexDirection: 'column' ,flex:1, justifyContent:'flex-start'}}>
 
                 <View style={{flexDirection: 'column',height:44 ,borderStyle: 'solid', borderWidth: 1}}>
                     <NavigationBar
