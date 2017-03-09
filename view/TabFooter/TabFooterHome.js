@@ -1,10 +1,11 @@
 import React,{Component} from 'react';
 import {
-    View,Text,TouchableOpacity,
+    View,
+    Text,
+    TouchableOpacity,
     StyleSheet
 } from 'react-native';
 import MyScene from '../navigation/MyScene';
-import Calendar from '../MyCalendar';
 export default class TabFooterHome extends Component{
     constructor(props){
         super(props);

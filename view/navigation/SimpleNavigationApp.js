@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import { AppRegistry,StyleSheet, Navigator, Text, View } from 'react-native';
+import {
+    AppRegistry,
+    StyleSheet,
+    Navigator,
+    Text,
+    View
+} from 'react-native';
 import NavigationBar from 'react-native-navigation-bar';
-import MyScene from './MyScene';
-import MyCalendar from '../MyCalendar';
 import TabNavigator from 'react-native-tab-navigator';
 import {Icon} from 'react-native-elements';
 import TabFooterHome from '../TabFooter/TabFooterHome';

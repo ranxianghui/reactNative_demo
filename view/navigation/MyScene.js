@@ -4,6 +4,7 @@
 import React, { Component, PropTypes } from 'react';
 import {
     AppRegistry,
+    navigator,
     StyleSheet,
     Text,
     View,
@@ -11,13 +12,13 @@ import {
     TextInput
 } from 'react-native';
 import NavigationBar from 'react-native-navigation-bar';
-
+import RCTRefreshView from '../RCTRefreshView';
 export default class CourseDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: null,
-            content:'请输入内容'
+             name: null,
+             content:'请输入内容'
         }
     }
 
@@ -33,12 +34,26 @@ export default class CourseDetail extends Component {
         navigator.pop();
     }
 
-
     _updateContent(){
         const {navigator} = this.props;
         this.props.updateContent(this.state.content);
     }
 
+
+    _goToRCTRefreshView(){
+        const {navigator} = this.props;
+        let mRCTRefreshView = {
+            component: RCTRefreshView,
+            // params: {
+            //     name: _this.state.name,
+            //     updateContent: (content)=> {
+            //         _this.setState({content: content});
+            //     }
+            // }
+        };
+        navigator.push(mRCTRefreshView);
+
+    }
     render() {
         return (
     <View style={{ backgroundColor:'white', flexDirection: 'column' ,flex:1, justifyContent:'flex-start'}}>
@@ -73,6 +88,9 @@ export default class CourseDetail extends Component {
 
                     <TouchableOpacity style={styles.scenes} onPress={this._updateContent.bind(this)}>
                         <Text style={styles.button}>&nbsp;&nbsp;确认更改</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.scenes} onPress={this._goToRCTRefreshView.bind(this)}>
+                        <Text style={styles.button}>&nbsp;&nbsp;进入列表</Text>
                     </TouchableOpacity>
                 </View>
             </View>
