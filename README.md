@@ -185,3 +185,19 @@ react-navite 的特点就是组件
 - 这里生成的release-unsigned.apk文件需要签名才能安装到真机上
 
 
+
+# iOS打离线包 #
+
+1、生成bundle
+在项目根目录中执行命令命令：
+
+- mkdir .ios/bundle
+- react-native bundle --entry-file index.ios.js --platform ios --dev false --bundle-output ./ios/bundle/index.ios.jsbundle --assets-dest ./ios/bundle
+
+2、将bundle以文件形式添加到Xcode打开的项目中（用Add Files to “项目”）
+
+3、更改AppDelegate.m中的资源地址（jsCodeLocation）代码：
+
+    jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"bundle/index.ios" withExtension:@"jsbundle"];
+
+4、使用Xcode按iOS一般流程打包。

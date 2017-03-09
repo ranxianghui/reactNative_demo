@@ -74,7 +74,11 @@ export default class SetUp extends Component {
 
                 <Navigator
                     initialRoute={defaultRoute}
-                    configureScene={(route, routeStack) => Navigator.SceneConfigs.HorizontalSwipeJump }
+                    configureScene={(route) => {
+                        var conf = Navigator.SceneConfigs.HorizontalSwipeJump;
+                        conf.gestures = null;
+                        return conf;
+                    }}
                     renderScene={(route, navigator) => {
                         let Component = route.component;
                         return (
