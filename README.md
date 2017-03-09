@@ -117,14 +117,26 @@ Android用户推荐使用Genymotion或海马玩模拟器，Androidstudio自带�
 ## react native class定义的几种方式 ##
 # view组件封装 #
     
-    //方法一
-    export default class className extends Component
+    //方式一
+    export default class className extends Component{}
     
-    //方法二
+    //方式二
     class className extends Component{
     
     }
     export.module = className
+
+	//方式三
+	const className = React.createClass(
+	{ 
+	
+		 render() {
+			 return (
+			 <View/>
+			 );
+		 }
+	});
+	export.module = className
 
 # 组件内部的代码结构 #
 react-navite 的特点就是组件
