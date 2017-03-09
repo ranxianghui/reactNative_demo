@@ -163,7 +163,7 @@ react-navite 的特点就是组件
   
 - 在项目路径下执行 mkdir -pandroid/app/src/main/assets
 - 紧接着运行以下命令，进行生成 inde.android.bundle 文件
-- 
+
     react-native bundle--platform android --dev false --entry-file index.android.js \
       --bundle-outputandroid/app/src/main/assets/index.android.bundle \
       --assets-dest android/app/src/main/res/
