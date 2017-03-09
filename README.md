@@ -60,8 +60,10 @@ Android用户推荐使用Genymotion或海马玩模拟器，Androidstudio自带�
 4. 下方有一个package.json文件 这个文件中管理了该reactnative项目所依赖的js依赖库 当我们在这个文件路径下执行 npm install 命令时系统会下载package.js中涉及到的依赖库到node_modules文件夹中。
 ## Reactive Component 生命周期 ##
 ![](http://i.imgur.com/nA0Ts5v.jpg)
+
 代码：
-    export default xxx SetUp extends Component {
+
+    export default class xxx extends Component {
     constructor(props){
     super(props);
     this.state = {
@@ -110,3 +112,64 @@ Android用户推荐使用Genymotion或海马玩模拟器，Androidstudio自带�
     return <view/>;
     }
     }
+
+
+## react native class定义的几种方式 ##
+# view组件封装 #
+    
+    //方法一
+    export default class className extends Component
+    
+    //方法二
+    class className extends Component{
+    
+    }
+    export.module = className
+
+# 组件内部的代码结构 #
+react-navite 的特点就是组件
+内部既包含了js的控制逻辑也包含了View的视图组装
+
+    export default class xxx extends Component {
+    constructor(props){
+    	super(props);
+    		this.state = {
+    				//定义一个属性name 用来接收父组件传来的数据
+    				name:null;
+    		};
+    	}
+    	customfnc =（）=>{
+    		 // 用属性的方式定义自己定方法
+    		}
+    	   	
+		// 构建组件的方法返回一个View		
+    	render() {
+    		return (
+    				<View>
+    					//...
+    				</View>);
+    	}
+    }
+
+## 打包发布 ##
+
+# Android #
+
+1.debug模式下react Native 项目会在自己的电脑上发布一个本地服务让app在服务上动态获取代码进行渲染。所以APP在debug模式下安装到真机上流畅性会比较差
+
+2.release模式下的用户体验与原生应用接近 很流畅
+
+3.release打包方法
+  
+- 在项目路径下执行 mkdir -pandroid/app/src/main/assets
+- 紧接着运行以下命令，进行生成 inde.android.bundle 文件
+- 
+    react-native bundle--platform android --dev false --entry-file index.android.js \
+      --bundle-outputandroid/app/src/main/assets/index.android.bundle \
+      --assets-dest android/app/src/main/res/
+
+- cd android && ./gradlew assembleRelease
+- 将资源管理打开到工程路径的android/app/build/outputs/apk下
+- 这里生成的release-unsigned.apk文件需要签名才能安装到真机上
+
+
