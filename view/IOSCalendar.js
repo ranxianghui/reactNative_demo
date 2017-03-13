@@ -6,7 +6,7 @@ import {
     Text,
     View,
     Dimensions,
-    ViewPagerAndroid,
+    ScrollView,
     TouchableOpacity,
 } from 'react-native';
 let {height, width} = Dimensions.get('window');
@@ -261,7 +261,7 @@ class DateBoard extends React.Component {
                 arr.push(
                     <TouchableOpacity
                         onPress={this.props.selectDay.bind(this, i)}
-                        key={i} style={[styles.dateBox, { height: cellWidth +10 }]}>
+                        key={i} style={[styles.dateBox, { backgroundColor: '#c0c0c0',height: cellWidth +10 }]}>
                         <View style={[styles.selected,
                             { height: cirWidth+10 , width: cirWidth }]}>
                             <Text style={styles.dateText}>{i}</Text>

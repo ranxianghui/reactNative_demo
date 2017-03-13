@@ -34,6 +34,7 @@ export default class CourseDetail extends Component {
         navigator.pop();
     }
 
+
     _updateContent(){
         const {navigator} = this.props;
         this.props.updateContent(this.state.content);
@@ -129,4 +130,5 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         alignItems:'center'
     }
+
 });
