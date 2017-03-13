@@ -10,6 +10,7 @@ import {
     StyleSheet,
     Text,
     View,
+    navigator,
     Dimensions,
     ListView,
 
@@ -20,6 +21,7 @@ import {
     RefreshStatus,
     LoadMoreStatus
 } from 'react-native-swRefresh'
+import NavigationBar from 'react-native-navigation-bar';
 
 const {width,height}=Dimensions.get('window')
 export default class RCTRefreshView extends Component{
@@ -27,10 +29,7 @@ export default class RCTRefreshView extends Component{
     _dataSource = new ListView.DataSource({rowHasChanged:(row1,row2)=>row1 !== row2})
     // 构造
     constructor(props) {
-
         super(props);
-
-
         // 初始状态
         this.state = {
             dataSource:this._dataSource.cloneWithRows([0,1,2,3,4,5,6,7,8,9])
@@ -38,12 +37,18 @@ export default class RCTRefreshView extends Component{
     }
 
     render(){
-
         // return this._renderScrollView() //ScrollView Demo ScrollView不支持上拉加载
 
         return this._renderListView() // ListView Demo
     }
-
+    onForwardHandle = () =>{
+        alert('需要自定义功能');
+    }
+    //返回
+    _pop() {
+        const {navigator} = this.props;
+        navigator.pop();
+    }
 
     /**
      * scrollVewDemo
@@ -72,20 +77,43 @@ export default class RCTRefreshView extends Component{
      */
     _renderListView(){
         return(
-            <SwRefreshListView
-                dataSource={this.state.dataSource}
-                ref="listView"
-                renderRow={this._renderRow.bind(this)}
-                onRefresh={this._onListRefersh.bind(this)}
-                onLoadMore={this._onLoadMore.bind(this)}
-                //isShowLoadMore={false}
-                renderFooter={()=>{return
-                    (<View style={{backgroundColor:'blue',height:30}}>
-                        <Text>我是footer</Text>
-                    </View>)
-                }}
+            <View style={{ backgroundColor:'white', flexDirection: 'column' ,flex:1, justifyContent:'flex-start'}}>
 
-            />
+                <View style={{flexDirection: 'column',height:44 ,borderStyle: 'solid', borderWidth: 1}}>
+                    <NavigationBar
+                        title={'Title Name'}
+                        height={44}
+                        titleColor={'#fff'}
+                        backgroundColor={'#149be0'}
+                        leftButtonTitle={'back'}
+                        leftButtonTitleColor={'#fff'}
+                        onLeftButtonPress={this._pop.bind(this)}
+                        rightButtonTitle={'forward'}
+                        rightButtonTitleColor={'#fff'}
+                        onRightButtonPress={this.onForwardHandle.bind(this)}/>
+                </View>
+                <View style={{flex: 1, flexDirection: 'column' }}>
+                    <SwRefreshListView
+                     dataSource={this.state.dataSource}
+                      ref="listView"
+                     renderRow={this._renderRow.bind(this)}
+                     onRefresh={this._onListRefresh.bind(this)}
+                     onLoadMore={this._onLoadMore.bind(this)}
+                     //isShowLoadMore={false}
+                     renderFooter={()=>{
+                             return(
+                                 <View style={{backgroundColor:'white',height:30}}>
+                                 <Text>我是footer</Text>
+                             </View>
+                             )
+                         }
+                     }/>
+                    </View>
+            </View>
+
+
+
+
         )
 
     }
@@ -118,7 +146,7 @@ export default class RCTRefreshView extends Component{
      * @param end
      * @private
      */
-    _onListRefersh(end){
+    _onListRefresh(end){
         let timer =  setTimeout(()=>{
             clearTimeout(timer);
             this._page=0;
@@ -179,11 +207,13 @@ const styles=StyleSheet.create({
     },
     cell:{
         height:100,
-        backgroundColor:'purple',
+        backgroundColor:'white',
         alignItems:'center',
         justifyContent:'center',
-        borderBottomColor:'#ececec',
-        borderBottomWidth:1
-
+        borderRadius:5,
+        borderWidth:1,
+        borderColor:'blue',
+        marginLeft:3,
+        marginRight:3,
     }
 })

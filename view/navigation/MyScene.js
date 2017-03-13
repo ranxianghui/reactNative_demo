@@ -120,11 +120,13 @@ const styles = StyleSheet.create({
         justifyContent:'flex-start',
     },
     button:{
-        height: 40,
-        paddingHorizontal: 5,
-        backgroundColor:'gray',
-        alignItems:'flex-start',
-        justifyContent:'flex-start',
+        marginTop:15,
+        marginLeft:10,
+        marginRight:10,
+        backgroundColor:'#1d9d74',
+        height:35,
+        borderRadius:5,
+        justifyContent:'center',
+        alignItems:'center'
     }
-
 });
