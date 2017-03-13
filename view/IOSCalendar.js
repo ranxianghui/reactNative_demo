@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 let {height, width} = Dimensions.get('window');
 
-export default class Calendar extends Component {
+export default class IOSCalendar extends Component {
     constructor(props) {
         super(props);
         this.state = {
