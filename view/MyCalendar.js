@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 import Calendar from './Calendar';
-import TextView from './TextView';
+import IOSCalendar from './IOSCalendar';
 
 let busyDays = [
     {date: new Date(2017, 2, 5), name: 'green day'},
@@ -32,7 +32,13 @@ export default class MyCalendar extends Component {
         if(Platform.OS === "ios"){
             return (
                 <View style={styles.container}>
-                    <TextView/>
+                    <IOSCalendar
+                        ref='myCalendar'
+                        date={_this.state.date} //必要值
+                        onDateChange={(date) => ToastAndroid.show(date, ToastAndroid.SHORT) }
+                        prevTitle='prev'//默认为Prev
+                        nextTitle='next'//默认为Next
+                        busyDay={busyDays}/>
                 </View>
             );
         }else{
