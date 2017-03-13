@@ -240,10 +240,11 @@ class DateBoard extends React.Component {
             } else {
                 arr.push(
                     <TouchableOpacity
+
                         onPress={this.props.selectDay.bind(this, i)}
-                        key={i} style={[styles.dateBox, { height: cellWidth +10 }]}>
+                        key={i} style={[styles.dateBox, {height: cellWidth +10 }]}>
                         <View style={[styles.selected,
-                            { height: cirWidth+10 , width: cirWidth }]}>
+                            {height: cirWidth+10 , width: cirWidth }]}>
                             <Text style={styles.dateText}>{i}</Text>
                             {/*//订制日历每一天的样式*/}
                             {msg != null ? <View style={styles.point}></View> : null}
