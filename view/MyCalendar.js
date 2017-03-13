@@ -10,7 +10,7 @@ import {
 
 import Calendar from './Calendar';
 import TextView from './TextView';
-import IOSCalendar from './IOSCalendar'
+import IOSCalendar from './IOSCalendar';
 
 let busyDays = [
     {date: new Date(2017, 2, 5), name: 'green day'},
