@@ -35,7 +35,7 @@ export default class TabFooterHome extends Component{
             <View>
                 <Text>this is  new home page</Text>
                 <TouchableOpacity onPress={this._push.bind(this)}>
-                    <View style={styles.form_commint}>
+                    <View style={styles.form_comint}>
                         <Text style={{color:'#fff'}}>跳转到新的页面</Text>
                     </View> 
                 </TouchableOpacity>
@@ -44,7 +44,7 @@ export default class TabFooterHome extends Component{
     }
 }
 const styles = StyleSheet.create({
-    form_commint:{
+    form_comint:{
         marginTop:15,
         marginLeft:10,
         marginRight:10,

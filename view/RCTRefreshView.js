@@ -5,12 +5,15 @@ import React,{Component} from 'react';
 import {
     AppRegistry,
     StyleSheet,
+    AsyncStorage,
     navigator,
     Text,
+    Alert,
     View
 } from 'react-native';
 import NavigationBar from 'react-native-navigation-bar';
 import CustomListView from './List/CustomListView'
+import StorageManager from '../until/LocalStorage/StorageManager'
 export default class RCTRefreshView extends Component {
 
     constructor(props){
@@ -21,7 +24,16 @@ export default class RCTRefreshView extends Component {
         navigator.pop();
     }
     onForwardHandle = () => {
-        alert('需要自定义功能');
+        StorageManager.get('name',function (value) {
+            Alert.alert(
+                '提示',
+                value,
+                [
+                    {text:'确定'},
+                    {text:'取消'}
+                ]
+            );
+        });
     }
     render(){
         return (

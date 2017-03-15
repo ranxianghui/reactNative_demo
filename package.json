@@ -15,7 +15,8 @@
     "react-native-tab-navigator": "^0.3.3",
     "react-native-viewpager": "*.*",
     "react-native-elements": "*.*",
-    "react-native-swRefresh":"*.*"
+    "react-native-swRefresh":"*.*",
+    "react-native-storage":"0.1.5"
   },
   "devDependencies": {
     "babel-jest": "18.0.0",

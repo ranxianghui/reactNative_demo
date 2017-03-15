@@ -1,11 +1,12 @@
 import React,{Component} from 'react';
 import {
-    View,Text,TouchableOpacity,Alert,
+    View,
+    Text,
+    TouchableOpacity,
+    Alert,
     StyleSheet
 } from 'react-native';
-// import {APP_MAIN_COLOR} from '../GlobalConst';
-// import HeaderComp from '../../components/HeaderComp';
-
+import StorageManager from '../../until/LocalStorage/StorageManager';
 export default class TabFooterMy extends Component{
     constructor(props){
         super(props);
@@ -16,7 +17,7 @@ export default class TabFooterMy extends Component{
                 {/*<HeaderComp title='我' />*/}
                 <Text>this is  new my  center page</Text>
                 <TouchableOpacity onPress={this._logOut.bind(this)}>
-                    <View style={styles.form_commint}>
+                    <View style={styles.form_commit}>
                         <Text style={{color:'#fff'}}>退出</Text>
                     </View>
                 </TouchableOpacity>
@@ -24,18 +25,22 @@ export default class TabFooterMy extends Component{
         );
     }
     _logOut(){
-        Alert.alert(
-            '提示',
-            '确定注销用户吗?',
-            [
-                {text:'确定',onPress:()=>this.props.onAniming && this.props.onAniming()},
-                {text:'取消'}
-            ]
-        );
+        StorageManager.save('name','rongzhao');
+        StorageManager.get('name',function (value) {
+           Alert.alert(
+               '提示',
+               value,
+               [
+                   {text:'确定'},
+                   {text:'取消'}
+               ]
+           );
+       });
+
     }
 }
 const styles = StyleSheet.create({
-    form_commint:{
+    form_commit:{
         marginTop:15,
         marginLeft:10,
         marginRight:10,
