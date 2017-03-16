@@ -25,10 +25,10 @@ export default class TabFooterMy extends Component{
         );
     }
     _logOut(){
-        StorageManager.save('name','rongzhao');
-        StorageManager.get('name',function (value) {
+
+        StorageManager.get('token',function (value) {
            Alert.alert(
-               '提示',
+               '提示当前token',
                value,
                [
                    {text:'确定'},

@@ -6,6 +6,8 @@ import {
     StyleSheet
 } from 'react-native';
 import MyScene from '../navigation/MyScene';
+import RequestAPI from '../../until/network/RequestAPI';
+
 export default class TabFooterHome extends Component{
     constructor(props){
         super(props);
@@ -16,6 +18,7 @@ export default class TabFooterHome extends Component{
     }
     //页面跳转
     _push() {
+        RequestAPI.login('13112345678','000000');
         let _this = this;
         const {navigator} = this.props;
         let scenes = {
@@ -35,7 +38,7 @@ export default class TabFooterHome extends Component{
             <View>
                 <Text>this is  new home page</Text>
                 <TouchableOpacity onPress={this._push.bind(this)}>
-                    <View style={styles.form_comint}>
+                    <View style={styles.form_commit}>
                         <Text style={{color:'#fff'}}>跳转到新的页面</Text>
                     </View> 
                 </TouchableOpacity>
@@ -44,7 +47,7 @@ export default class TabFooterHome extends Component{
     }
 }
 const styles = StyleSheet.create({
-    form_comint:{
+    form_commit:{
         marginTop:15,
         marginLeft:10,
         marginRight:10,

@@ -55,7 +55,11 @@ export default class StorageManager {
     * @returns {*}
     */
     static delete(key) {
-        return AsyncStorage.removeItem(key);
+        AsyncStorage.removeItem(key);
+    }
+    
+    static clear() {
+         AsyncStorage.clear();
     }
 }
 

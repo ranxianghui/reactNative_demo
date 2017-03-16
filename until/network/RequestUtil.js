@@ -1,11 +1,15 @@
 /**
  * Created by RanXianghui on 2017/3/15.
- */
-/**
  * RequestUtil 网络请求的实现
  * https://github.com/facebook/react-native
  */
+import StorageManager from '../LocalStorage/StorageManager'
 
+//助教端host测试地址
+const HOST = 'https://api.baidu.com';
+let header = {
+    "Content-Type": "application/x-www-form-urlencoded"
+}
 export default class RequestUtil{
     /*
      *  get请求
@@ -40,15 +44,16 @@ export default class RequestUtil{
      * */
     static post(url,params,headers,callback){
         //fetch请求
+        url = HOST+'/'+url;
         fetch(url,{
             method: 'POST',
             headers: headers,
-            body:JSON.stringify(params)
+            body:params
         })
-            .then((response) => response.json())
-            .then((responseJSON) => {
-                callback(responseJSON)
-            }) .done();
+        .then((response) => response.json())
+        .then((responseJSON) => {
+            callback(responseJSON)
+        }) .done();
     }
 
     /*
@@ -88,31 +93,29 @@ export default class RequestUtil{
             callback(responseJSON)
         }) .done();
     }
-
-
-    _fetch(fetch_promise, timeout) {
-        var abort_fn = null;
-
-        //这是一个可以被reject的promise
-        var abort_promise = new Promise(function(resolve, reject) {
-            abort_fn = function() {
-                reject('abort promise');
-            };
-        });
-
-        //这里使用Promise.race，以最快 resolve 或 reject 的结果来传入后续绑定的回调
-        var abortable_promise = Promise.race([
-            fetch_promise,
-            abort_promise
-        ]);
-
-        setTimeout(function() {
-            abort_fn();
-        }, timeout);
-
-        return abortable_promise;
-    }
-    static addHeader(){
+    // _fetch(fetch_promise, timeout) {
+    //     var abort_fn = null;
+    //
+    //     //这是一个可以被reject的promise
+    //     var abort_promise = new Promise(function(resolve, reject) {
+    //         abort_fn = function() {
+    //             reject('abort promise');
+    //         };
+    //     });
+    //
+    //     //这里使用Promise.race，以最快 resolve 或 reject 的结果来传入后续绑定的回调
+    //     var abortable_promise = Promise.race([
+    //         fetch_promise,
+    //         abort_promise
+    //     ]);
+    //
+    //     setTimeout(function() {
+    //         abort_fn();
+    //     }, timeout);
+    //
+    //     return abortable_promise;
+    // }
+    static addHeader(key,value){
 
     }
 

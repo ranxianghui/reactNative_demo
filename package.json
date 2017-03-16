@@ -11,12 +11,13 @@
     "react-native": "0.39.2",
     "react-native-calendar": "^0.9.0",
     "react-native-custom-navigation": "^0.2.2",
-    "react-native-navigation-bar": "^0.2.1",
-    "react-native-tab-navigator": "^0.3.3",
-    "react-native-viewpager": "*.*",
     "react-native-elements": "*.*",
-    "react-native-swRefresh":"*.*",
-    "react-native-storage":"0.1.5"
+    "react-native-md5": "^1.0.0",
+    "react-native-navigation-bar": "^0.2.1",
+    "react-native-storage": "^0.1.5",
+    "react-native-swRefresh": "*.*",
+    "react-native-tab-navigator": "^0.3.3",
+    "react-native-viewpager": "*.*"
   },
   "devDependencies": {
     "babel-jest": "18.0.0",
