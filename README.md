@@ -180,7 +180,8 @@ react-navite 的特点就是组件
       --bundle-outputandroid/app/src/main/assets/index.android.bundle \
       --assets-dest android/app/src/main/res/
 
-- cd android && ./gradlew assembleRelease
+- Mac下cd android && ./gradlew assembleRelease
+- Windows下 android && gradlew assembleRelease
 - 将资源管理打开到工程路径的android/app/build/outputs/apk下
 - 这里生成的release-unsigned.apk文件需要签名才能安装到真机上
 
@@ -201,3 +202,23 @@ react-navite 的特点就是组件
     jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"bundle/index.ios" withExtension:@"jsbundle"];
 
 4、使用Xcode按iOS一般流程打包。
+# ReactNative 学习入门第二课课 在genymotion下调试React for Android #
+
+- ![](http://i.imgur.com/Hq0NmKV.png) 
+- 点击右侧的红圈出弹出菜单 选中Debug JS Remotely 点击重新打开选项 会弹出一个页面
+- ![调试页面](http://i.imgur.com/IkAHUAy.png)
+- 这样我就是可以想调试一个web项目一样调试我们的APP了
+
+# ReactNative 学习入门第三课 经常遇到的那些坑 #
+
+
+## npm命令 ##
+
+- npm 命令后面的几种情况 -g与没有-g区别在于是否将安装的结果保存到package.json中
+ 
+- react-native 版本问题 react-native经常会出现有些依赖安装后会报错，可以尝试使用react-native upgrade -g 更新react-native版本来解决
+
+- 执行npm install 命令时请注意 有的时候有些依赖还是无法被下载，这时候需要针对没有被下载下来的包单独下载
+
+- 大家在使用官方提供的依赖的时候请注意说明文档上面有标记为iso 或标记为Android表示只有在某一平台上才可以用
+
