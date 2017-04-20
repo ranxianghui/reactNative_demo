@@ -181,7 +181,7 @@ react-navite 的特点就是组件
       --assets-dest android/app/src/main/res/
 
 - Mac下cd android && ./gradlew assembleRelease
-- Windows下 android && gradlew assembleRelease
+- Windows下 cd android && gradlew assembleRelease
 - 将资源管理打开到工程路径的android/app/build/outputs/apk下
 - 这里生成的release-unsigned.apk文件需要签名才能安装到真机上
 
@@ -221,4 +221,37 @@ react-navite 的特点就是组件
 - 执行npm install 命令时请注意 有的时候有些依赖还是无法被下载，这时候需要针对没有被下载下来的包单独下载
 
 - 大家在使用官方提供的依赖的时候请注意说明文档上面有标记为iso 或标记为Android表示只有在某一平台上才可以用
+- 在调试过程中偶尔会出现No connected devices!
+	
+	1 首先检查是否启动了真机或者模拟器
 
+	2 如果使用的是模拟器请关掉运行run-android命令时启动的dos服务窗口重新运行命令
+
+	3 清理android/app/build 目录下的所有文件重新运行run命令
+
+	4 如果使用的是真机调试检查开发者选中是否存启动了调试模式
+
+- 如果发现can not found module字样请检查是否有module没有引入或者引入名称或路径错误
+
+- React Native(RN)启动不成功,unable to download js bundle错误解决方案
+
+	解决方案如下:
+
+	1.首先需要设置IP和端口，默认端口是8081，手机(模拟器)和电脑在同一个网络中，查询电脑的IP地址。
+
+	2.手动去删除.babelrc隐藏文件，具体文件目录为:node_modules/react-deep-force-update/.babelrc
+   如果是其他版本，那也是需要删除的不过路径已经发生变化了。具体路径:/node_modules/react-native/node_modules/react-transform-hmr/node_modules/react-proxy/node_modules/react-deep-force-update
+
+	3.最后重点  Android项目关闭终端重新执行运行命令，iOS项目也需要关闭服务终端,重新启动packager
+ 
+- WebStorm不识别React Native语法解决方案
+
+	大家可能会很奇怪,明明自己电脑react native,jscs,react-template都安装了，可以为什么打开react native项目文件还是各种报错呢？如下图：
+ ![](http://i.imgur.com/92U42QM.jpg)
+	遇到这个问题还是比较简单，只需要开启JSX语法支持即可，具体解决方案如下:
+
+	Preferences -> Languages and Frameworks -> JavaScript -> language version下拉框里选JSX Harmony
+
+- Super expression must either be null or a function,not undefined 错误截图:
+![](http://i.imgur.com/SaPmnNV.jpg)
+	出现这个问题很可能是ES5/ES6语法混用了,可以检查一下语法情况,或者从0.26版本的React导入方式发生了改变
